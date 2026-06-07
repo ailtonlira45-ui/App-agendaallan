@@ -6,45 +6,32 @@
     <title>Agenda do Allan</title>
     <style>
         :root {
-            --bg: rgba(10, 10, 15, 0.85);
-            --surface: rgba(22, 22, 30, 0.8);
-            --surface2: rgba(28, 28, 38, 0.7);
-            --surface3: rgba(35, 35, 48, 0.6);
-            --text: #e8e8ed;
-            --text2: #9a9aab;
-            --text3: #5c5c6e;
+            --bg: #0d0d15;
+            --surface: #161622;
+            --surface2: #1e1e2e;
+            --surface3: #282840;
+            --text: #eeeef5;
+            --text2: #9999aa;
+            --text3: #555568;
             --accent: #7c6ff7;
             --accent2: #a99bfa;
-            --accent-glow: rgba(124, 111, 247, 0.3);
             --green: #00c896;
-            --green-bg: rgba(0, 200, 150, 0.12);
             --red: #f07070;
-            --red-bg: rgba(240, 112, 112, 0.12);
             --blue: #5b9cf5;
-            --blue-bg: rgba(91, 156, 245, 0.12);
             --orange: #f5b84d;
-            --orange-bg: rgba(245, 184, 77, 0.12);
             --pink: #f070a0;
-            --pink-bg: rgba(240, 112, 160, 0.12);
-            --yellow: #f5c842;
-            --yellow-bg: rgba(245, 200, 66, 0.15);
-            --border: rgba(255, 255, 255, 0.06);
-            --border2: rgba(255, 255, 255, 0.1);
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
-            --shadow: 0 4px 20px rgba(0,0,0,0.4);
-            --shadow-lg: 0 12px 40px rgba(0,0,0,0.5);
-            --radius: 20px;
+            --border: rgba(255,255,255,0.06);
+            --border2: rgba(255,255,255,0.1);
+            --radius: 18px;
             --radius-sm: 14px;
-            --radius-xs: 10px;
             --safe-bottom: env(safe-area-inset-bottom, 16px);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html, body { height: 100%; width: 100%; overflow-x: hidden; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-            background: radial-gradient(ellipse at 50% 0%, rgba(124, 111, 247, 0.15) 0%, rgba(10, 10, 20, 0.95) 50%, rgba(5, 5, 12, 0.98) 100%);
-            background-attachment: fixed;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
             color: var(--text);
             display: flex;
             justify-content: center;
@@ -55,739 +42,291 @@
         .app {
             width: 100%;
             max-width: 440px;
-            padding: 0 16px;
-            padding-bottom: calc(100px + var(--safe-bottom));
+            padding: 0 14px;
+            padding-bottom: calc(90px + var(--safe-bottom));
             min-height: 100vh;
-            min-height: 100dvh;
         }
 
-        /* Header */
         .header {
-            padding: 24px 4px 16px;
+            padding: 20px 4px 14px;
             position: sticky;
             top: 0;
             z-index: 10;
-            background: transparent;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: var(--bg);
         }
-        .header-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .header-row { display: flex; align-items: center; justify-content: space-between; }
+        .header-left { display: flex; align-items: center; gap: 10px; }
         .header-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
+            width: 40px; height: 40px; border-radius: 50%;
             background: linear-gradient(135deg, #7c6ff7, #a99bfa);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            box-shadow: 0 4px 20px rgba(124, 111, 247, 0.35);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; border: 2px solid rgba(255,255,255,0.1);
         }
-        .header-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--text);
-            letter-spacing: -0.3px;
-        }
-        .header-subtitle {
-            font-size: 12px;
-            color: var(--text2);
-            font-weight: 500;
-        }
+        .header-title { font-size: 19px; font-weight: 700; letter-spacing: -0.3px; }
+        .header-subtitle { font-size: 11px; color: var(--text2); font-weight: 500; }
         .clock {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 30px;
-            padding: 10px 16px;
-            box-shadow: var(--shadow-sm);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            display: flex; align-items: center; gap: 3px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 25px; padding: 8px 14px;
         }
         .clock-time {
-            font-size: 19px;
-            font-weight: 700;
-            font-family: 'SF Mono', 'JetBrains Mono', 'Courier New', monospace;
-            color: var(--accent2);
-            letter-spacing: 0.5px;
+            font-size: 18px; font-weight: 700;
+            font-family: 'SF Mono', 'Courier New', monospace; color: var(--accent2);
         }
         .clock-sec {
-            font-size: 11px;
-            color: var(--text3);
-            font-family: 'SF Mono', 'JetBrains Mono', 'Courier New', monospace;
-            font-weight: 500;
+            font-size: 10px; color: var(--text3);
+            font-family: 'SF Mono', 'Courier New', monospace;
         }
 
-        /* Calendar */
         .calendar {
-            background: var(--surface);
-            border-radius: var(--radius);
-            padding: 18px;
-            margin: 4px 0 16px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: var(--surface); border-radius: var(--radius);
+            padding: 16px; margin: 6px 0 14px; border: 1px solid var(--border);
         }
-        .calendar-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
-        .calendar-month {
-            font-weight: 800;
-            font-size: 18px;
-            color: #fff;
-            letter-spacing: -0.3px;
-        }
+        .calendar-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+        .calendar-month { font-weight: 800; font-size: 17px; color: #fff; }
         .calendar-nav {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--surface2);
-            border: 1px solid var(--border2);
-            color: #fff;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: 700;
-            transition: all 0.15s;
+            width: 32px; height: 32px; border-radius: 50%;
+            background: var(--surface2); border: 1px solid var(--border2);
+            color: #fff; cursor: pointer; display: flex; align-items: center;
+            justify-content: center; font-size: 15px; font-weight: 700;
         }
-        .calendar-nav:hover { background: var(--surface3); }
-        .calendar-nav:active { transform: scale(0.9); background: var(--accent); border-color: var(--accent); }
-        .calendar-weekdays {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 2px;
-            margin-bottom: 8px;
-        }
-        .calendar-weekday {
-            text-align: center;
-            font-size: 12px;
-            color: #b0b0c0;
-            font-weight: 700;
-            padding: 6px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-        .calendar-dates {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-        }
+        .calendar-nav:active { background: var(--accent); transform: scale(0.9); }
+        .calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-bottom: 6px; }
+        .calendar-weekday { text-align: center; font-size: 11px; color: #b0b0c0; font-weight: 700; padding: 5px 0; }
+        .calendar-dates { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
         .calendar-date {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.15s;
-            position: relative;
-            color: #e0e0e8;
+            aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+            border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer;
+            transition: all 0.15s; position: relative; color: #e0e0e8;
         }
-        .calendar-date:hover { background: var(--surface3); }
         .calendar-date:active { transform: scale(0.88); }
         .calendar-date.other { color: #4a4a5a; opacity: 0.5; }
         .calendar-date.today {
-            background: var(--accent);
-            color: #fff;
-            font-weight: 800;
-            font-size: 16px;
-            box-shadow: 0 4px 20px var(--accent-glow);
+            background: var(--accent); color: #fff; font-weight: 800; font-size: 15px;
+            box-shadow: 0 4px 16px rgba(124,111,247,0.3);
         }
         .calendar-date.selected {
-            outline: 3px solid var(--accent2);
-            outline-offset: -2px;
-            box-shadow: 0 0 24px var(--accent-glow);
-            background: rgba(124, 111, 247, 0.25);
-            font-weight: 700;
+            outline: 3px solid var(--accent2); outline-offset: -2px;
+            background: rgba(124,111,247,0.2); font-weight: 700;
         }
-        .calendar-date.today.selected {
-            outline-color: #fff;
-            background: var(--accent);
-        }
+        .calendar-date.today.selected { outline-color: #fff; background: var(--accent); }
         .calendar-date.has-task::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent2);
-            box-shadow: 0 0 6px var(--accent-glow);
+            content: ''; position: absolute; bottom: 4px; width: 5px; height: 5px;
+            border-radius: 50%; background: var(--accent2);
         }
         .calendar-date.today.has-task::after { background: #fff; }
 
-        /* Selected date display */
-        .selected-date-display {
-            background: var(--surface);
-            border-radius: var(--radius-sm);
-            padding: 14px 16px;
-            margin-bottom: 16px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--accent);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+        .filter-info {
+            background: var(--surface); border-radius: var(--radius-sm);
+            padding: 12px 14px; margin-bottom: 14px; text-align: center;
+            border: 1px solid var(--accent); display: none;
         }
-        .selected-date-display .date-label {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--text2);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 4px;
-        }
-        .selected-date-display .date-value {
-            font-size: 20px;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: -0.3px;
-        }
-        .selected-date-display .clear-date-btn {
-            display: inline-block;
-            margin-top: 8px;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            cursor: pointer;
-            border: 1px solid var(--border2);
-            background: var(--surface2);
-            color: var(--text2);
-            font-family: inherit;
-            transition: all 0.2s;
-        }
-        .selected-date-display .clear-date-btn:hover {
-            background: var(--red-bg);
-            color: var(--red);
-            border-color: var(--red);
+        .filter-info.show { display: block; }
+        .filter-info .date-label { font-size: 10px; font-weight: 700; color: var(--text2); text-transform: uppercase; }
+        .filter-info .date-value { font-size: 18px; font-weight: 800; color: #fff; }
+        .filter-info .clear-btn {
+            display: inline-block; margin-top: 6px; padding: 5px 12px;
+            border-radius: 15px; font-size: 10px; font-weight: 600; cursor: pointer;
+            border: 1px solid var(--border2); background: var(--surface2);
+            color: var(--text2); font-family: inherit;
         }
 
-        /* Progress */
         .progress-card {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 18px;
-            background: var(--surface);
-            border-radius: var(--radius);
-            margin-bottom: 16px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            display: flex; align-items: center; gap: 14px; padding: 16px;
+            background: var(--surface); border-radius: var(--radius);
+            margin-bottom: 14px; border: 1px solid var(--border);
         }
-        .progress-ring {
-            position: relative;
-            width: 60px;
-            height: 60px;
-            flex-shrink: 0;
-        }
+        .progress-ring { position: relative; width: 55px; height: 55px; flex-shrink: 0; }
         .progress-ring svg { transform: rotate(-90deg); }
         .progress-ring-bg { fill: none; stroke: var(--surface3); stroke-width: 5; }
         .progress-ring-fill {
-            fill: none;
-            stroke: url(#gradient);
-            stroke-width: 5;
-            stroke-linecap: round;
-            transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            fill: none; stroke: var(--accent2); stroke-width: 5;
+            stroke-linecap: round; transition: stroke-dashoffset 0.5s ease;
         }
         .progress-ring-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 17px;
-            font-weight: 800;
-            color: #fff;
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%,-50%); font-size: 15px; font-weight: 800; color: #fff;
         }
-        .progress-info-title { font-weight: 700; font-size: 15px; }
-        .progress-info-sub { font-size: 12px; color: var(--text2); margin-top: 2px; }
+        .progress-info-title { font-weight: 700; font-size: 14px; }
+        .progress-info-sub { font-size: 11px; color: var(--text2); }
 
-        /* Tasks */
         .section-title {
-            font-size: 12px;
-            font-weight: 700;
-            color: #b0b0c0;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            padding-left: 4px;
+            font-size: 11px; font-weight: 700; color: #b0b0c0;
+            text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; padding-left: 4px;
         }
-        .task-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
+        .task-list { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
         .task {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px 16px;
-            background: var(--surface);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            display: flex; align-items: center; gap: 10px; padding: 14px 15px;
+            background: var(--surface); border-radius: var(--radius-sm);
+            cursor: pointer; transition: all 0.15s; border: 1px solid var(--border);
+            position: relative; overflow: hidden;
         }
-        .task::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: transparent;
-            border-radius: 0 3px 3px 0;
-            transition: background 0.2s;
-        }
-        .task:hover {
-            box-shadow: var(--shadow);
-            transform: translateY(-1px);
-            background: var(--surface2);
-        }
-        .task:active { transform: scale(0.985); }
+        .task:active { background: var(--surface2); }
         .task.done { opacity: 0.5; }
         .task.done .task-name { text-decoration: line-through; color: var(--text3); }
-        .task.today-task { border-color: rgba(245, 200, 66, 0.35); box-shadow: 0 4px 20px rgba(245, 200, 66, 0.12); }
-        .task.today-task::before { background: #f5c842; }
+        .task.today-task { border-color: rgba(245,200,66,0.35); }
+        .task.today-task::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+            width: 3px; background: #f5c842; border-radius: 0 3px 3px 0;
+        }
         .task-check {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            border: 2.5px solid var(--border2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 12px;
-            font-weight: 700;
-            transition: all 0.25s;
+            width: 24px; height: 24px; border-radius: 50%;
+            border: 2.5px solid var(--border2); display: flex; align-items: center;
+            justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 700;
             background: var(--surface2);
         }
-        .task-check:hover { border-color: var(--green); }
         .task.done .task-check {
-            background: var(--green);
-            border-color: var(--green);
-            color: #000;
-            box-shadow: 0 4px 16px rgba(0, 200, 150, 0.3);
+            background: var(--green); border-color: var(--green); color: #000;
         }
         .task-body { flex: 1; min-width: 0; }
-        .task-name { font-weight: 600; font-size: 14px; letter-spacing: -0.2px; }
-        .task-meta {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 3px;
-            font-size: 11px;
-            color: var(--text2);
-            flex-wrap: wrap;
-        }
-        .task-meta .date-highlight {
-            color: var(--accent2);
-            font-weight: 600;
-        }
-        .task-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+        .task-name { font-weight: 600; font-size: 14px; }
+        .task-meta { display: flex; align-items: center; gap: 5px; margin-top: 2px; font-size: 10px; color: var(--text2); }
+        .task-meta .date-highlight { color: var(--accent2); font-weight: 600; }
+        .task-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
         .dot-trabalho { background: var(--blue); }
         .dot-estudo { background: #f07070; }
         .dot-exercício { background: var(--green); }
         .dot-pessoal { background: var(--pink); }
-        .task-actions { display: flex; gap: 4px; flex-shrink: 0; }
+        .task-actions { display: flex; gap: 3px; flex-shrink: 0; }
         .task-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            background: var(--surface2);
-            color: var(--text2);
-            transition: all 0.15s;
+            width: 30px; height: 30px; border-radius: 50%; border: none;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 12px; background: var(--surface2); color: var(--text2);
         }
-        .task-btn:hover { background: var(--surface3); color: var(--text); }
-        .task-btn:active { transform: scale(0.85); }
-        .task-btn.del:hover { background: var(--red-bg); color: var(--red); }
+        .task-btn.del:active { background: rgba(240,112,112,0.15); color: var(--red); }
 
-        /* Empty */
-        .empty {
-            text-align: center;
-            padding: 50px 20px;
-            color: var(--text3);
-        }
-        .empty-icon {
-            font-size: 56px;
-            margin-bottom: 10px;
-            opacity: 0.3;
-        }
-        .empty-text { font-size: 14px; font-weight: 500; }
+        .empty { text-align: center; padding: 40px 20px; color: var(--text3); }
+        .empty-icon { font-size: 48px; margin-bottom: 8px; opacity: 0.3; }
+        .empty-text { font-size: 13px; }
 
-        /* FAB */
         .fab {
-            position: fixed;
-            bottom: calc(28px + var(--safe-bottom));
-            left: 50%;
-            transform: translateX(-50%);
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #7c6ff7, #a99bfa);
-            border: none;
-            color: #fff;
-            font-size: 28px;
-            cursor: pointer;
-            z-index: 20;
-            box-shadow: 0 8px 35px rgba(124, 111, 247, 0.45);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.25s ease;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: fixed; bottom: calc(24px + var(--safe-bottom)); left: 50%;
+            transform: translateX(-50%); width: 54px; height: 54px; border-radius: 50%;
+            background: linear-gradient(135deg, #7c6ff7, #a99bfa); border: none;
+            color: #fff; font-size: 26px; cursor: pointer; z-index: 20;
+            box-shadow: 0 8px 30px rgba(124,111,247,0.4);
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid rgba(255,255,255,0.1);
         }
-        .fab:hover {
-            transform: translateX(-50%) scale(1.05);
-            box-shadow: 0 12px 40px rgba(124, 111, 247, 0.55);
-        }
-        .fab:active {
-            transform: translateX(-50%) scale(0.9);
-            box-shadow: 0 4px 16px rgba(124, 111, 247, 0.3);
-        }
+        .fab:active { transform: translateX(-50%) scale(0.9); }
 
-        /* Modal */
         .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.6);
-            z-index: 30;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+            z-index: 30; display: flex; align-items: flex-end; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.25s;
         }
         .modal-overlay.open { opacity: 1; pointer-events: auto; }
         .modal {
-            background: var(--surface);
-            border-radius: 24px 24px 0 0;
-            padding: 24px 20px calc(24px + var(--safe-bottom));
-            width: 100%;
-            max-width: 440px;
-            transform: translateY(100%);
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid var(--border);
-            border-bottom: none;
-            max-height: 85vh;
-            overflow-y: auto;
-            box-shadow: 0 -8px 50px rgba(0,0,0,0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: var(--surface); border-radius: 22px 22px 0 0;
+            padding: 22px 18px calc(22px + var(--safe-bottom));
+            width: 100%; max-width: 440px; transform: translateY(100%);
+            transition: transform 0.3s ease; border: 1px solid var(--border);
+            border-bottom: none; max-height: 85vh; overflow-y: auto;
         }
         .modal-overlay.open .modal { transform: translateY(0); }
         .modal-handle {
-            width: 36px;
-            height: 4px;
-            background: var(--surface3);
-            border-radius: 2px;
-            margin: 0 auto 20px;
+            width: 32px; height: 3px; background: var(--surface3);
+            border-radius: 2px; margin: 0 auto 18px;
         }
-        .modal-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-align: center;
-            letter-spacing: -0.2px;
-        }
-        .form-group { margin-bottom: 16px; }
+        .modal-title { font-size: 17px; font-weight: 700; margin-bottom: 18px; text-align: center; }
+        .form-group { margin-bottom: 14px; }
         .form-label {
-            display: block;
-            font-size: 11px;
-            font-weight: 700;
-            color: #b0b0c0;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 6px;
+            display: block; font-size: 10px; font-weight: 700; color: #b0b0c0;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;
         }
         .form-input {
-            width: 100%;
-            padding: 13px 16px;
-            background: var(--surface2);
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            color: #fff;
-            font-size: 15px;
-            font-family: inherit;
-            outline: none;
-            transition: all 0.2s;
+            width: 100%; padding: 12px 14px; background: var(--surface2);
+            border: 2px solid var(--border); border-radius: 10px; color: #fff;
+            font-size: 15px; font-family: inherit; outline: none;
         }
-        .form-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 4px var(--accent-glow);
-            background: var(--surface3);
-        }
+        .form-input:focus { border-color: var(--accent); }
         .form-input::placeholder { color: var(--text3); }
 
-        /* Mini calendar no modal */
-        .mini-cal {
-            background: var(--surface2);
-            border-radius: 14px;
-            padding: 14px;
-            border: 1px solid var(--border);
-            user-select: none;
-            -webkit-user-select: none;
-        }
-        .mini-cal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-        }
-        .mini-cal-month { font-weight: 700; font-size: 15px; color: #fff; }
+        .mini-cal { background: var(--surface2); border-radius: 12px; padding: 12px; border: 1px solid var(--border); }
+        .mini-cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+        .mini-cal-month { font-weight: 700; font-size: 14px; color: #fff; }
         .mini-cal-nav {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--surface3);
-            border: 1px solid var(--border2);
-            color: #fff;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 700;
-            transition: all 0.15s;
+            width: 28px; height: 28px; border-radius: 50%; background: var(--surface3);
+            border: 1px solid var(--border2); color: #fff; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;
         }
-        .mini-cal-nav:active { background: var(--accent); border-color: var(--accent); transform: scale(0.9); }
-        .mini-cal-days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 1px;
-            margin-bottom: 5px;
-        }
-        .mini-cal-day {
-            text-align: center;
-            font-size: 11px;
-            color: #b0b0c0;
-            font-weight: 700;
-            padding: 5px 0;
-            text-transform: uppercase;
-        }
-        .mini-cal-dates {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 2px;
-        }
+        .mini-cal-nav:active { background: var(--accent); transform: scale(0.9); }
+        .mini-cal-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; margin-bottom: 4px; }
+        .mini-cal-day { text-align: center; font-size: 10px; color: #b0b0c0; font-weight: 700; padding: 4px 0; }
+        .mini-cal-dates { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
         .mini-cal-date {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.12s;
-            color: #e0e0e8;
+            aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+            border-radius: 7px; font-size: 12px; font-weight: 600; cursor: pointer;
+            transition: all 0.1s; color: #e0e0e8;
         }
-        .mini-cal-date:hover { background: var(--surface3); }
         .mini-cal-date:active { transform: scale(0.85); }
         .mini-cal-date.other { color: #4a4a5a; opacity: 0.4; }
-        .mini-cal-date.today {
-            background: var(--accent);
-            color: #fff;
-            font-weight: 800;
-            box-shadow: 0 2px 12px var(--accent-glow);
-        }
+        .mini-cal-date.today { background: var(--accent); color: #fff; font-weight: 800; }
         .mini-cal-date.sel {
-            background: rgba(124, 111, 247, 0.3);
-            outline: 3px solid var(--accent2);
-            outline-offset: -2px;
-            font-weight: 700;
+            background: rgba(124,111,247,0.25); outline: 2.5px solid var(--accent2);
+            outline-offset: -2px; font-weight: 700;
         }
-        .mini-cal-date.today.sel {
-            outline-color: #fff;
-            background: var(--accent);
-        }
+        .mini-cal-date.today.sel { outline-color: #fff; background: var(--accent); }
         .mini-cal-selected {
-            text-align: center;
-            margin-top: 12px;
-            font-size: 12px;
-            color: var(--accent2);
-            padding: 8px;
-            background: rgba(124, 111, 247, 0.06);
-            border-radius: 10px;
-            min-height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 5px;
-            font-weight: 600;
+            text-align: center; margin-top: 10px; font-size: 11px; color: var(--accent2);
+            padding: 6px; background: rgba(124,111,247,0.05); border-radius: 8px;
+            min-height: 30px; display: flex; align-items: center; justify-content: center;
+            flex-wrap: wrap; gap: 4px; font-weight: 600;
         }
         .mini-cal-tag {
-            background: rgba(124, 111, 247, 0.18);
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 14px;
-            font-size: 11px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+            background: rgba(124,111,247,0.15); color: #fff; padding: 4px 9px;
+            border-radius: 12px; font-size: 10px; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 4px;
         }
-        .mini-cal-tag .remove {
-            cursor: pointer;
-            font-size: 13px;
-            opacity: 0.6;
-            padding: 1px 3px;
-            transition: opacity 0.15s;
-        }
-        .mini-cal-tag .remove:hover { opacity: 1; }
+        .mini-cal-tag .remove { cursor: pointer; font-size: 12px; opacity: 0.6; }
+        .mini-cal-tag .remove:active { opacity: 1; }
 
-        /* Chips */
-        .chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
+        .chips { display: flex; flex-wrap: wrap; gap: 7px; }
         .chip {
-            padding: 10px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            border: 2px solid transparent;
-            background: var(--surface2);
+            padding: 9px 14px; border-radius: 18px; font-size: 12px; font-weight: 600;
+            cursor: pointer; border: 2px solid transparent; background: var(--surface2);
             color: var(--text2);
-            transition: all 0.2s;
         }
-        .chip:hover { border-color: var(--border2); }
-        .chip.active { border-color: var(--accent); color: #fff; background: rgba(124, 111, 247, 0.12); }
-        .chip.work { color: var(--blue); background: var(--blue-bg); }
-        .chip.work.active { border-color: var(--blue); color: var(--blue); background: rgba(91, 156, 245, 0.18); }
-        .chip.study { color: #f07070; background: rgba(240, 112, 112, 0.1); }
-        .chip.study.active { border-color: #f07070; color: #f07070; }
-        .chip.exercise { color: var(--green); background: var(--green-bg); }
-        .chip.exercise.active { border-color: var(--green); color: var(--green); }
-        .chip.personal { color: var(--pink); background: var(--pink-bg); }
-        .chip.personal.active { border-color: var(--pink); color: var(--pink); }
+        .chip.active { border-color: var(--accent); color: #fff; background: rgba(124,111,247,0.1); }
+        .chip.work { color: var(--blue); }
+        .chip.work.active { border-color: var(--blue); }
+        .chip.study { color: #f07070; }
+        .chip.study.active { border-color: #f07070; }
+        .chip.exercise { color: var(--green); }
+        .chip.exercise.active { border-color: var(--green); }
+        .chip.personal { color: var(--pink); }
+        .chip.personal.active { border-color: var(--pink); }
 
-        .modal-btns {
-            display: flex;
-            gap: 10px;
-            margin-top: 22px;
-        }
+        .modal-btns { display: flex; gap: 8px; margin-top: 20px; }
         .btn {
-            flex: 1;
-            padding: 14px;
-            border-radius: 14px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
-            transition: all 0.2s;
-            letter-spacing: -0.2px;
+            flex: 1; padding: 13px; border-radius: 12px; font-size: 14px;
+            font-weight: 600; cursor: pointer; border: none; font-family: inherit;
         }
         .btn:active { transform: scale(0.95); }
-        .btn-primary {
-            background: linear-gradient(135deg, #7c6ff7, #a99bfa);
-            color: #fff;
-            box-shadow: 0 4px 20px var(--accent-glow);
-        }
-        .btn-primary:hover { box-shadow: 0 6px 28px var(--accent-glow); }
-        .btn-secondary {
-            background: var(--surface2);
-            color: var(--text);
-            border: 1px solid var(--border2);
-        }
-        .btn-secondary:hover { background: var(--surface3); }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border2); }
 
         .clear-btn {
-            display: block;
-            margin: 0 auto 20px;
-            padding: 11px 22px;
-            border-radius: 25px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            border: 1px solid var(--border2);
-            background: var(--surface);
-            color: var(--text2);
-            font-family: inherit;
-            transition: all 0.2s;
-            box-shadow: var(--shadow-sm);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            display: block; margin: 0 auto 18px; padding: 10px 20px;
+            border-radius: 22px; font-size: 11px; font-weight: 600; cursor: pointer;
+            border: 1px solid var(--border2); background: var(--surface);
+            color: var(--text2); font-family: inherit;
         }
-        .clear-btn:hover { background: var(--red-bg); color: var(--red); border-color: var(--red); }
+        .clear-btn:active { background: rgba(240,112,112,0.1); color: var(--red); }
 
-        /* Toast */
         .toast {
-            position: fixed;
-            top: 20px;
-            left: 50%;
+            position: fixed; top: 16px; left: 50%;
             transform: translateX(-50%) translateY(-120px);
-            background: rgba(30, 30, 40, 0.95);
-            color: #fff;
-            padding: 12px 22px;
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 600;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-            z-index: 50;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: #1e1e2e; color: #fff; padding: 10px 20px;
+            border-radius: 25px; font-size: 12px; font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 50;
+            transition: transform 0.35s ease; border: 1px solid rgba(255,255,255,0.1);
         }
         .toast.show { transform: translateX(-50%) translateY(0); }
-
-        @media (min-width: 440px) {
-            .app {
-                border-left: 1px solid var(--border);
-                border-right: 1px solid var(--border);
-                box-shadow: 0 0 80px rgba(0,0,0,0.4);
-            }
-        }
     </style>
 </head>
 <body>
     <div class="app">
-        <!-- Header -->
         <div class="header">
             <div class="header-row">
                 <div class="header-left">
@@ -804,7 +343,6 @@
             </div>
         </div>
 
-        <!-- Calendário principal -->
         <div class="calendar">
             <div class="calendar-header">
                 <button class="calendar-nav" id="calPrev">◀</button>
@@ -815,25 +353,17 @@
             <div class="calendar-dates" id="calDates"></div>
         </div>
 
-        <!-- Data selecionada -->
-        <div class="selected-date-display" id="selectedDateDisplay" style="display:none;">
+        <div class="filter-info" id="filterInfo">
             <div class="date-label">📅 Data selecionada</div>
-            <div class="date-value" id="selectedDateValue"></div>
-            <button class="clear-date-btn" id="clearDateBtn">✕ Mostrar todas</button>
+            <div class="date-value" id="filterDateValue"></div>
+            <button class="clear-btn" id="clearFilterBtn">✕ Mostrar todas</button>
         </div>
 
-        <!-- Progresso -->
         <div class="progress-card">
             <div class="progress-ring">
-                <svg width="60" height="60" viewBox="0 0 60 60">
-                    <defs>
-                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#7c6ff7;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#a99bfa;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <circle class="progress-ring-bg" cx="30" cy="30" r="25"/>
-                    <circle class="progress-ring-fill" id="progressFill" cx="30" cy="30" r="25"/>
+                <svg width="55" height="55" viewBox="0 0 55 55">
+                    <circle class="progress-ring-bg" cx="27.5" cy="27.5" r="23"/>
+                    <circle class="progress-ring-fill" id="progressFill" cx="27.5" cy="27.5" r="23"/>
                 </svg>
                 <div class="progress-ring-text" id="progressPct">0%</div>
             </div>
@@ -843,27 +373,24 @@
             </div>
         </div>
 
-        <!-- Lista de tarefas -->
-        <div class="section-title" id="sectionTitle">📌 Atividades</div>
+        <div class="section-title">📌 Atividades</div>
         <div class="task-list" id="taskList"></div>
         <button class="clear-btn" id="clearDone">🧹 Limpar concluídas</button>
     </div>
 
-    <!-- FAB -->
     <button class="fab" id="fab">+</button>
 
-    <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" id="modalSheet">
             <div class="modal-handle"></div>
             <div class="modal-title" id="modalTitle">Nova Atividade</div>
-            <div id="editBadge" style="display:none;text-align:center;margin-bottom:14px;font-size:11px;color:var(--accent2);font-weight:600;background:rgba(124,111,247,0.1);padding:6px 14px;border-radius:20px;">✏️ Editando atividade</div>
+            <div id="editBadge" style="display:none;text-align:center;margin-bottom:12px;font-size:10px;color:var(--accent2);font-weight:600;background:rgba(124,111,247,0.1);padding:5px 12px;border-radius:18px;">✏️ Editando</div>
             <div class="form-group">
                 <label class="form-label">📝 O que vai fazer?</label>
                 <input type="text" class="form-input" id="inputName" placeholder="Ex: Academia, reunião..." autocomplete="off">
             </div>
             <div class="form-group">
-                <label class="form-label">📅 Selecione os dias (toque para marcar/desmarcar)</label>
+                <label class="form-label">📅 Selecione os dias</label>
                 <div class="mini-cal">
                     <div class="mini-cal-header">
                         <button class="mini-cal-nav" id="miniCalPrev">◀</button>
@@ -894,455 +421,309 @@
     <div class="toast" id="toast"></div>
 
     <script>
-        (function() {
-            const KEY = 'agenda_allan_v1';
-            let tasks = [];
-            let dateFilter = null;
-            let editId = null;
-            let category = 'trabalho';
-            let calYear = new Date().getFullYear();
-            let calMonth = new Date().getMonth();
-            let miniYear = new Date().getFullYear();
-            let miniMonth = new Date().getMonth();
-            let miniDates = [];
+        const KEY = 'agenda_allan_v2';
+        let tasks = [], dateFilter = null, editId = null, category = 'trabalho';
+        let calYear = new Date().getFullYear(), calMonth = new Date().getMonth();
+        let miniYear = new Date().getFullYear(), miniMonth = new Date().getMonth(), miniDates = [];
 
-            function today() {
-                const d = new Date();
-                return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
-            }
-            function uid() { return 't' + Date.now() + Math.random().toString(36).substr(2,6); }
+        function today() {
+            const d = new Date();
+            return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+        }
+        function uid() { return 't'+Date.now()+Math.random().toString(36).substr(2,6); }
 
-            function load() {
-                try {
-                    const s = localStorage.getItem(KEY);
-                    if (s) tasks = JSON.parse(s);
-                    if (!Array.isArray(tasks)) tasks = [];
-                } catch(e) { tasks = []; }
-                if (tasks.length === 0) {
-                    const t = today();
-                    tasks = [
-                        { id: uid(), name: 'Reunião de planejamento', dates: [t], category: 'trabalho', done: false, created: Date.now() },
-                        { id: uid(), name: 'Estudar TypeScript', dates: [t], category: 'estudo', done: false, created: Date.now() },
-                        { id: uid(), name: 'Corrida matinal', dates: [t], category: 'exercício', done: true, created: Date.now() },
-                        { id: uid(), name: 'Ler 30 minutos', dates: [t], category: 'pessoal', done: false, created: Date.now() },
-                    ];
-                    save();
-                }
-                tasks.forEach(t => {
-                    if (t.date && !t.dates) { t.dates = [t.date]; delete t.date; }
-                    if (!t.dates) t.dates = [today()];
-                });
-            }
-            function save() { localStorage.setItem(KEY, JSON.stringify(tasks)); }
-
-            function fmtDate(ds) {
-                if (!ds) return '';
-                const [y,m,d] = ds.split('-').map(Number);
-                const dt = new Date(y,m-1,d);
-                const td = today();
-                const tmr = new Date(); tmr.setDate(tmr.getDate()+1);
-                const yst = new Date(); yst.setDate(yst.getDate()-1);
-                if (ds === td) return 'Hoje';
-                if (ds === tmr.toISOString().split('T')[0]) return 'Amanhã';
-                if (ds === yst.toISOString().split('T')[0]) return 'Ontem';
-                return dt.toLocaleDateString('pt-BR', { day:'numeric', month:'short' });
-            }
-            function fmtDates(arr) {
-                if (!arr || arr.length === 0) return '';
-                return arr.map(d => fmtDate(d)).join(', ');
-            }
-            function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
-
-            function filtered() {
-                if (!dateFilter) return [];
-                return tasks.filter(t => t.dates && t.dates.includes(dateFilter)).sort((a,b) => b.created - a.created);
-            }
-
-            function renderTasks() {
-                const list = document.getElementById('taskList');
-                const f = filtered();
-                const td = today();
-                const sectionTitle = document.getElementById('sectionTitle');
-                const selectedDisplay = document.getElementById('selectedDateDisplay');
-
-                if (!dateFilter) {
-                    selectedDisplay.style.display = 'none';
-                    sectionTitle.textContent = '📌 Selecione uma data';
-                    list.innerHTML = `<div class="empty"><div class="empty-icon">📅</div><div class="empty-text">Toque em um dia no calendário para ver as atividades</div></div>`;
-                } else if (f.length === 0) {
-                    selectedDisplay.style.display = 'block';
-                    document.getElementById('selectedDateValue').textContent = fmtDate(dateFilter);
-                    sectionTitle.textContent = '📌 Atividades';
-                    list.innerHTML = `<div class="empty"><div class="empty-icon">📭</div><div class="empty-text">Nenhuma atividade para ${fmtDate(dateFilter).toLowerCase()}</div></div>`;
-                } else {
-                    selectedDisplay.style.display = 'block';
-                    document.getElementById('selectedDateValue').textContent = fmtDate(dateFilter);
-                    sectionTitle.textContent = '📌 Atividades';
-                    list.innerHTML = f.map(t => {
-                        const id = t.id;
-                        const datesStr = fmtDates(t.dates);
-                        const isToday = t.dates && t.dates.includes(td) && !t.done;
-                        return `<div class="task ${t.done ? 'done' : ''} ${isToday ? 'today-task' : ''}" data-id="${id}">
-                            <div class="task-check" data-act="toggle" data-id="${id}">${t.done ? '✓' : ''}</div>
-                            <div class="task-body" data-act="edit" data-id="${id}">
-                                <div class="task-name">${esc(t.name)}</div>
-                                <div class="task-meta">
-                                    ${datesStr ? `<span class="date-highlight">📅 ${datesStr}</span>` : ''}
-                                    <span class="task-dot dot-${t.category}"></span>
-                                    <span>${t.category.charAt(0).toUpperCase()+t.category.slice(1)}</span>
-                                    ${t.dates && t.dates.length > 1 ? `<span style="color:var(--accent2);font-weight:600;">+${t.dates.length-1}</span>` : ''}
-                                </div>
-                            </div>
-                            <div class="task-actions">
-                                <button class="task-btn" data-act="edit" data-id="${id}">✏️</button>
-                                <button class="task-btn del" data-act="delete" data-id="${id}">🗑️</button>
-                            </div>
-                        </div>`;
-                    }).join('');
-                }
-                updateStats();
-            }
-
-            function updateStats() {
-                const f = filtered();
-                const total = f.length;
-                const done = f.filter(t => t.done).length;
-                const pct = total === 0 ? 0 : Math.round((done/total)*100);
-                document.getElementById('progressPct').textContent = pct + '%';
-                const circ = 2 * Math.PI * 25;
-                const fill = document.getElementById('progressFill');
-                fill.style.strokeDasharray = circ;
-                fill.style.strokeDashoffset = circ - (pct/100)*circ;
-
-                if (!dateFilter) {
-                    document.getElementById('progressTitle').textContent = 'Selecione uma data';
-                    document.getElementById('progressSub').textContent = 'Toque em um dia no calendário';
-                } else if (total === 0) {
-                    document.getElementById('progressTitle').textContent = 'Nenhuma tarefa';
-                    document.getElementById('progressSub').textContent = 'Neste dia';
-                } else if (done === total) {
-                    document.getElementById('progressTitle').textContent = 'Tudo concluído! 🎉';
-                    document.getElementById('progressSub').textContent = `${done}/${total} atividades feitas`;
-                } else {
-                    document.getElementById('progressTitle').textContent = `${done} de ${total} concluídas`;
-                    document.getElementById('progressSub').textContent = `${total-done} pendentes`;
-                }
-            }
-
-            function renderCalendar() {
-                const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-                document.getElementById('calMonth').textContent = months[calMonth] + ' ' + calYear;
-                const wd = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
-                document.getElementById('calWeekdays').innerHTML = wd.map(d => `<div class="calendar-weekday">${d}</div>`).join('');
-                const firstDay = new Date(calYear, calMonth, 1).getDay();
-                const daysIn = new Date(calYear, calMonth+1, 0).getDate();
-                const daysPrev = new Date(calYear, calMonth, 0).getDate();
-                const td = today();
-                const taskDates = new Set();
-                tasks.forEach(t => { if (t.dates) t.dates.forEach(d => taskDates.add(d)); });
-                let h = '';
-                for (let i = firstDay-1; i >= 0; i--) {
-                    const day = daysPrev - i;
-                    const m = calMonth === 0 ? 11 : calMonth-1;
-                    const y = calMonth === 0 ? calYear-1 : calYear;
-                    h += `<div class="calendar-date other" data-date="${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}">${day}</div>`;
-                }
-                for (let day = 1; day <= daysIn; day++) {
-                    const ds = calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');
-                    let cls = 'calendar-date';
-                    if (ds === td) cls += ' today';
-                    if (ds === dateFilter) cls += ' selected';
-                    if (taskDates.has(ds)) cls += ' has-task';
-                    h += `<div class="${cls}" data-date="${ds}">${day}</div>`;
-                }
-                const total = firstDay + daysIn;
-                const rem = total <= 35 ? 35 - total : 42 - total;
-                for (let day = 1; day <= rem; day++) {
-                    const m = calMonth === 11 ? 0 : calMonth+1;
-                    const y = calMonth === 11 ? calYear+1 : calYear;
-                    h += `<div class="calendar-date other" data-date="${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}">${day}</div>`;
-                }
-                document.getElementById('calDates').innerHTML = h;
-            }
-
-            function calMove(d) {
-                calMonth += d;
-                if (calMonth > 11) { calMonth = 0; calYear++; }
-                else if (calMonth < 0) { calMonth = 11; calYear--; }
-                renderCalendar();
-            }
-
-            function calSelect(ds) {
-                dateFilter = ds;
-                renderTasks();
-                renderCalendar();
-            }
-
-            function clearFilter() {
-                dateFilter = null;
-                renderTasks();
-                renderCalendar();
-            }
-
-            function renderMiniCal() {
-                const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-                document.getElementById('miniCalMonth').textContent = months[miniMonth] + ' ' + miniYear;
-                const wd = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
-                document.getElementById('miniCalDays').innerHTML = wd.map(d => `<div class="mini-cal-day">${d}</div>`).join('');
-                const firstDay = new Date(miniYear, miniMonth, 1).getDay();
-                const daysIn = new Date(miniYear, miniMonth+1, 0).getDate();
-                const daysPrev = new Date(miniYear, miniMonth, 0).getDate();
-                const td = today();
-                let h = '';
-                for (let i = firstDay-1; i >= 0; i--) {
-                    const day = daysPrev - i;
-                    const m = miniMonth === 0 ? 11 : miniMonth-1;
-                    const y = miniMonth === 0 ? miniYear-1 : miniYear;
-                    h += `<div class="mini-cal-date other" data-date="${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}">${day}</div>`;
-                }
-                for (let day = 1; day <= daysIn; day++) {
-                    const ds = miniYear+'-'+String(miniMonth+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');
-                    let cls = 'mini-cal-date';
-                    if (ds === td) cls += ' today';
-                    if (miniDates.includes(ds)) cls += ' sel';
-                    h += `<div class="${cls}" data-date="${ds}">${day}</div>`;
-                }
-                const total = firstDay + daysIn;
-                const rem = total <= 35 ? 35 - total : 42 - total;
-                for (let day = 1; day <= rem; day++) {
-                    const m = miniMonth === 11 ? 0 : miniMonth+1;
-                    const y = miniMonth === 11 ? miniYear+1 : miniYear;
-                    h += `<div class="mini-cal-date other" data-date="${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}">${day}</div>`;
-                }
-                document.getElementById('miniCalDates').innerHTML = h;
-                updateMiniSelected();
-            }
-
-            function updateMiniSelected() {
-                const el = document.getElementById('miniCalSelected');
-                if (miniDates.length === 0) {
-                    el.innerHTML = '📅 Nenhum dia selecionado';
-                } else if (miniDates.length <= 5) {
-                    el.innerHTML = miniDates.map(d =>
-                        `<span class="mini-cal-tag">${fmtDate(d)} <span class="remove" data-date="${d}">✕</span></span>`
-                    ).join('');
-                } else {
-                    el.innerHTML = `<span class="mini-cal-tag">${miniDates.length} dias selecionados</span>`;
-                }
-            }
-
-            function miniToggle(ds) {
-                const idx = miniDates.indexOf(ds);
-                if (idx > -1) { miniDates.splice(idx, 1); }
-                else { miniDates.push(ds); }
-                miniDates.sort();
-                renderMiniCal();
-            }
-
-            function miniRemove(ds) {
-                miniDates = miniDates.filter(d => d !== ds);
-                renderMiniCal();
-            }
-
-            function miniMove(d) {
-                miniMonth += d;
-                if (miniMonth > 11) { miniMonth = 0; miniYear++; }
-                else if (miniMonth < 0) { miniMonth = 11; miniYear--; }
-                renderMiniCal();
-            }
-
-            function toggleTask(id) {
-                const t = tasks.find(x => x.id === id);
-                if (t) { t.done = !t.done; save(); renderTasks(); renderCalendar(); toast(t.done ? '✅ Concluída!' : '🔄 Reaberta'); }
-            }
-
-            function deleteTask(id) {
-                const len = tasks.length;
-                tasks = tasks.filter(x => x.id !== id);
-                if (tasks.length < len) {
-                    if (editId === id) closeModal();
-                    save(); renderTasks(); renderCalendar();
-                    toast('🗑️ Removida');
-                }
-            }
-
-            function clearDone() {
-                if (!dateFilter) { toast('ℹ️ Selecione uma data primeiro'); return; }
-                const f = filtered();
-                const n = f.filter(t => t.done).length;
-                if (n === 0) { toast('ℹ️ Nada para limpar'); return; }
-                const idsToRemove = f.filter(t => t.done).map(t => t.id);
-                tasks = tasks.filter(t => !idsToRemove.includes(t.id));
-                save(); renderTasks(); renderCalendar();
-                toast(`🧹 ${n} removida(s)`);
-            }
-
-            function openModal(id) {
-                const input = document.getElementById('inputName');
-                if (id) {
-                    const t = tasks.find(x => x.id === id);
-                    if (!t) return;
-                    editId = id;
-                    document.getElementById('modalTitle').textContent = 'Editar Atividade';
-                    document.getElementById('editBadge').style.display = 'block';
-                    document.getElementById('btnSave').textContent = '💾 Atualizar';
-                    input.value = t.name;
-                    miniDates = [...(t.dates || [today()])];
-                    category = t.category;
-                    if (miniDates.length > 0) {
-                        const [y,m] = miniDates[0].split('-');
-                        miniYear = parseInt(y); miniMonth = parseInt(m)-1;
-                    }
-                } else {
-                    editId = null;
-                    document.getElementById('modalTitle').textContent = 'Nova Atividade';
-                    document.getElementById('editBadge').style.display = 'none';
-                    document.getElementById('btnSave').textContent = '💾 Salvar';
-                    input.value = '';
-                    miniDates = dateFilter ? [dateFilter] : [today()];
-                    category = 'trabalho';
-                    const [y,m] = miniDates[0].split('-');
-                    miniYear = parseInt(y); miniMonth = parseInt(m)-1;
-                }
-                updateChips();
-                renderMiniCal();
-                document.getElementById('modalOverlay').classList.add('open');
-                setTimeout(() => input.focus(), 400);
-            }
-
-            function closeModal() {
-                document.getElementById('modalOverlay').classList.remove('open');
-                editId = null;
-                miniDates = [];
-            }
-
-            function setCategory(cat) { category = cat; updateChips(); }
-
-            function updateChips() {
-                document.querySelectorAll('.chip').forEach(c => {
-                    c.classList.remove('active');
-                    if (c.dataset.cat === category) c.classList.add('active');
-                });
-            }
-
-            function saveTask() {
-                const input = document.getElementById('inputName');
-                const name = input.value.trim();
-                if (!name) { toast('⚠️ Digite o nome'); input.focus(); return; }
-                if (miniDates.length === 0) { toast('⚠️ Selecione pelo menos um dia'); return; }
-
-                if (editId) {
-                    const t = tasks.find(x => x.id === editId);
-                    if (t) { t.name = name; t.dates = [...miniDates]; t.category = category; }
-                    toast('✅ Atualizada!');
-                } else {
-                    tasks.push({ id: uid(), name, dates: [...miniDates], category, done: false, created: Date.now() });
-                    toast('✅ Adicionada!');
-                }
+        function load() {
+            try { const s = localStorage.getItem(KEY); if (s) tasks = JSON.parse(s); if (!Array.isArray(tasks)) tasks = []; } catch(e) { tasks = []; }
+            if (!tasks.length) {
+                const t = today();
+                tasks = [
+                    { id: uid(), name: 'Reunião de planejamento', dates: [t], category: 'trabalho', done: false, created: Date.now() },
+                    { id: uid(), name: 'Estudar TypeScript', dates: [t], category: 'estudo', done: false, created: Date.now() },
+                    { id: uid(), name: 'Corrida matinal', dates: [t], category: 'exercício', done: true, created: Date.now() },
+                    { id: uid(), name: 'Ler 30 minutos', dates: [t], category: 'pessoal', done: false, created: Date.now() },
+                ];
                 save();
-                if (dateFilter && !miniDates.includes(dateFilter)) {
-                    dateFilter = miniDates[0];
-                    const [y,m] = miniDates[0].split('-');
-                    calYear = parseInt(y); calMonth = parseInt(m)-1;
-                }
-                renderTasks();
-                renderCalendar();
-                closeModal();
             }
+            tasks.forEach(t => { if (t.date && !t.dates) { t.dates = [t.date]; delete t.date; } if (!t.dates) t.dates = [today()]; });
+        }
+        function save() { localStorage.setItem(KEY, JSON.stringify(tasks)); }
 
-            let toastTimer;
-            function toast(msg) {
-                const t = document.getElementById('toast');
-                t.textContent = msg;
-                t.classList.add('show');
-                clearTimeout(toastTimer);
-                toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+        function fmtDate(ds) {
+            if (!ds) return '';
+            const [y,m,d] = ds.split('-').map(Number), dt = new Date(y,m-1,d);
+            const td = today(), tmr = new Date(); tmr.setDate(tmr.getDate()+1);
+            const yst = new Date(); yst.setDate(yst.getDate()-1);
+            if (ds === td) return 'Hoje';
+            if (ds === tmr.toISOString().split('T')[0]) return 'Amanhã';
+            if (ds === yst.toISOString().split('T')[0]) return 'Ontem';
+            return dt.toLocaleDateString('pt-BR', { day:'numeric', month:'short' });
+        }
+        function fmtDates(arr) { return arr && arr.length ? arr.map(d => fmtDate(d)).join(', ') : ''; }
+        function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+        function filtered() {
+            if (!dateFilter) return [];
+            return tasks.filter(t => t.dates && t.dates.includes(dateFilter)).sort((a,b) => b.created - a.created);
+        }
+
+        function renderTasks() {
+            const list = document.getElementById('taskList'), f = filtered(), td = today();
+            const fi = document.getElementById('filterInfo');
+            if (!dateFilter) {
+                fi.classList.remove('show');
+                list.innerHTML = '<div class="empty"><div class="empty-icon">📅</div><div class="empty-text">Toque em um dia no calendário</div></div>';
+            } else if (!f.length) {
+                fi.classList.add('show');
+                document.getElementById('filterDateValue').textContent = fmtDate(dateFilter);
+                list.innerHTML = `<div class="empty"><div class="empty-icon">📭</div><div class="empty-text">Nenhuma atividade para ${fmtDate(dateFilter).toLowerCase()}</div></div>`;
+            } else {
+                fi.classList.add('show');
+                document.getElementById('filterDateValue').textContent = fmtDate(dateFilter);
+                list.innerHTML = f.map(t => {
+                    const id = t.id, datesStr = fmtDates(t.dates), isToday = t.dates && t.dates.includes(td) && !t.done;
+                    return `<div class="task ${t.done?'done':''} ${isToday?'today-task':''}" data-id="${id}">
+                        <div class="task-check" data-act="toggle" data-id="${id}">${t.done?'✓':''}</div>
+                        <div class="task-body" data-act="edit" data-id="${id}">
+                            <div class="task-name">${esc(t.name)}</div>
+                            <div class="task-meta">
+                                ${datesStr?`<span class="date-highlight">📅 ${datesStr}</span>`:''}
+                                <span class="task-dot dot-${t.category}"></span> ${t.category.charAt(0).toUpperCase()+t.category.slice(1)}
+                                ${t.dates&&t.dates.length>1?`<span style="color:var(--accent2);font-weight:600;">+${t.dates.length-1}</span>`:''}
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <button class="task-btn" data-act="edit" data-id="${id}">✏️</button>
+                            <button class="task-btn del" data-act="delete" data-id="${id}">🗑️</button>
+                        </div>
+                    </div>`;
+                }).join('');
             }
+            updateStats();
+        }
 
-            function updateClock() {
-                const n = new Date();
-                document.getElementById('clockTime').textContent = String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
-                document.getElementById('clockSec').textContent = String(n.getSeconds()).padStart(2,'0');
+        function updateStats() {
+            const f = filtered(), total = f.length, done = f.filter(t => t.done).length;
+            const pct = total ? Math.round((done/total)*100) : 0;
+            document.getElementById('progressPct').textContent = pct+'%';
+            const circ = 2*Math.PI*23, fill = document.getElementById('progressFill');
+            fill.style.strokeDasharray = circ;
+            fill.style.strokeDashoffset = circ - (pct/100)*circ;
+            if (!dateFilter) {
+                document.getElementById('progressTitle').textContent = 'Selecione uma data';
+                document.getElementById('progressSub').textContent = 'Toque em um dia no calendário';
+            } else if (!total) {
+                document.getElementById('progressTitle').textContent = 'Nenhuma tarefa';
+                document.getElementById('progressSub').textContent = 'Neste dia';
+            } else if (done === total) {
+                document.getElementById('progressTitle').textContent = 'Tudo concluído! 🎉';
+                document.getElementById('progressSub').textContent = `${done}/${total} atividades feitas`;
+            } else {
+                document.getElementById('progressTitle').textContent = `${done} de ${total} concluídas`;
+                document.getElementById('progressSub').textContent = `${total-done} pendentes`;
             }
+        }
 
-            function updateHeader() {
-                document.getElementById('headerDate').textContent = new Date().toLocaleDateString('pt-BR', { weekday:'long', day:'numeric', month:'long' });
+        function renderCalendar() {
+            const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+            document.getElementById('calMonth').textContent = months[calMonth]+' '+calYear;
+            document.getElementById('calWeekdays').innerHTML = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(d => `<div class="calendar-weekday">${d}</div>`).join('');
+            const firstDay = new Date(calYear,calMonth,1).getDay(), daysIn = new Date(calYear,calMonth+1,0).getDate();
+            const daysPrev = new Date(calYear,calMonth,0).getDate(), td = today();
+            const taskDates = new Set(); tasks.forEach(t => { if (t.dates) t.dates.forEach(d => taskDates.add(d)); });
+            let h = '';
+            for (let i = firstDay-1; i >= 0; i--) {
+                const day = daysPrev-i, m = calMonth===0?11:calMonth-1, y = calMonth===0?calYear-1:calYear;
+                h += `<div class="calendar-date other" data-date="${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}">${day}</div>`;
             }
-
-            function bind() {
-                document.getElementById('taskList').addEventListener('click', function(e) {
-                    const btn = e.target.closest('[data-act]');
-                    if (!btn) return;
-                    e.stopPropagation();
-                    const act = btn.dataset.act;
-                    const id = btn.dataset.id;
-                    if (act === 'toggle') toggleTask(id);
-                    else if (act === 'edit') openModal(id);
-                    else if (act === 'delete') deleteTask(id);
-                });
-
-                document.getElementById('calDates').addEventListener('click', function(e) {
-                    const d = e.target.closest('.calendar-date');
-                    if (!d) return;
-                    calSelect(d.dataset.date);
-                });
-                document.getElementById('calPrev').addEventListener('click', function(e) { e.preventDefault(); calMove(-1); });
-                document.getElementById('calNext').addEventListener('click', function(e) { e.preventDefault(); calMove(1); });
-                document.getElementById('clearDateBtn').addEventListener('click', function(e) { e.preventDefault(); clearFilter(); });
-
-                document.getElementById('miniCalDates').addEventListener('click', function(e) {
-                    const d = e.target.closest('.mini-cal-date');
-                    if (!d) return;
-                    e.stopPropagation();
-                    miniToggle(d.dataset.date);
-                });
-                document.getElementById('miniCalSelected').addEventListener('click', function(e) {
-                    const r = e.target.closest('.remove');
-                    if (!r) return;
-                    e.stopPropagation();
-                    miniRemove(r.dataset.date);
-                });
-                document.getElementById('miniCalPrev').addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); miniMove(-1); });
-                document.getElementById('miniCalNext').addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); miniMove(1); });
-
-                document.getElementById('chips').addEventListener('click', function(e) {
-                    const c = e.target.closest('.chip');
-                    if (!c) return;
-                    setCategory(c.dataset.cat);
-                });
-
-                document.getElementById('fab').addEventListener('click', function(e) {
-                    e.preventDefault();
-                    if (document.getElementById('modalOverlay').classList.contains('open')) closeModal();
-                    else openModal();
-                });
-
-                document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
-                document.getElementById('modalSheet').addEventListener('click', function(e) { e.stopPropagation(); });
-                document.getElementById('btnCancel').addEventListener('click', function(e) { e.preventDefault(); closeModal(); });
-                document.getElementById('btnSave').addEventListener('click', function(e) { e.preventDefault(); saveTask(); });
-                document.getElementById('clearDone').addEventListener('click', function(e) { e.preventDefault(); clearDone(); });
-
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && document.getElementById('modalOverlay').classList.contains('open')) closeModal();
-                });
+            for (let day = 1; day <= daysIn; day++) {
+                const ds = calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');
+                let cls = 'calendar-date';
+                if (ds === td) cls += ' today';
+                if (ds === dateFilter) cls += ' selected';
+                if (taskDates.has(ds)) cls += ' has-task';
+                h += `<div class="${cls}" data-date="${ds}">${day}</div>`;
             }
-
-            function init() {
-                load();
-                renderTasks();
-                renderCalendar();
-                updateHeader();
-                updateClock();
-                updateChips();
-                bind();
-                setInterval(updateClock, 1000);
-                setInterval(save, 15000);
-                window.addEventListener('beforeunload', save);
+            const total = firstDay+daysIn, rem = total<=35?35-total:42-total;
+            for (let day = 1; day <= rem; day++) {
+                const m = calMonth===11?0:calMonth+1, y = calMonth===11?calYear+1:calYear;
+                h += `<div class="calendar-date other" data-date="${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}">${day}</div>`;
             }
+            document.getElementById('calDates').innerHTML = h;
+        }
 
-            init();
-        })();
+        function calMove(d) { calMonth += d; if (calMonth>11) { calMonth=0; calYear++; } else if (calMonth<0) { calMonth=11; calYear--; } renderCalendar(); }
+        function calSelect(ds) { dateFilter = ds; renderTasks(); renderCalendar(); }
+        function clearFilter() { dateFilter = null; renderTasks(); renderCalendar(); }
+
+        function renderMiniCal() {
+            const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+            document.getElementById('miniCalMonth').textContent = months[miniMonth]+' '+miniYear;
+            document.getElementById('miniCalDays').innerHTML = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(d => `<div class="mini-cal-day">${d}</div>`).join('');
+            const firstDay = new Date(miniYear,miniMonth,1).getDay(), daysIn = new Date(miniYear,miniMonth+1,0).getDate();
+            const daysPrev = new Date(miniYear,miniMonth,0).getDate(), td = today();
+            let h = '';
+            for (let i = firstDay-1; i >= 0; i--) {
+                const day = daysPrev-i, m = miniMonth===0?11:miniMonth-1, y = miniMonth===0?miniYear-1:miniYear;
+                h += `<div class="mini-cal-date other" data-date="${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}">${day}</div>`;
+            }
+            for (let day = 1; day <= daysIn; day++) {
+                const ds = miniYear+'-'+String(miniMonth+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');
+                let cls = 'mini-cal-date';
+                if (ds === td) cls += ' today';
+                if (miniDates.includes(ds)) cls += ' sel';
+                h += `<div class="${cls}" data-date="${ds}">${day}</div>`;
+            }
+            const total = firstDay+daysIn, rem = total<=35?35-total:42-total;
+            for (let day = 1; day <= rem; day++) {
+                const m = miniMonth===11?0:miniMonth+1, y = miniMonth===11?miniYear+1:miniYear;
+                h += `<div class="mini-cal-date other" data-date="${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}">${day}</div>`;
+            }
+            document.getElementById('miniCalDates').innerHTML = h;
+            updateMiniSel();
+        }
+
+        function updateMiniSel() {
+            const el = document.getElementById('miniCalSelected');
+            if (!miniDates.length) el.innerHTML = '📅 Nenhum dia selecionado';
+            else if (miniDates.length <= 5) el.innerHTML = miniDates.map(d => `<span class="mini-cal-tag">${fmtDate(d)} <span class="remove" data-date="${d}">✕</span></span>`).join('');
+            else el.innerHTML = `<span class="mini-cal-tag">${miniDates.length} dias selecionados</span>`;
+        }
+
+        function miniToggle(ds) {
+            const idx = miniDates.indexOf(ds);
+            if (idx > -1) miniDates.splice(idx, 1);
+            else miniDates.push(ds);
+            miniDates.sort(); renderMiniCal();
+        }
+        function miniRemove(ds) { miniDates = miniDates.filter(d => d !== ds); renderMiniCal(); }
+        function miniMove(d) { miniMonth += d; if (miniMonth>11) { miniMonth=0; miniYear++; } else if (miniMonth<0) { miniMonth=11; miniYear--; } renderMiniCal(); }
+
+        function toggleTask(id) {
+            const t = tasks.find(x => x.id === id);
+            if (t) { t.done = !t.done; save(); renderTasks(); renderCalendar(); toast(t.done?'✅ Concluída!':'🔄 Reaberta'); }
+        }
+        function deleteTask(id) {
+            const len = tasks.length; tasks = tasks.filter(x => x.id !== id);
+            if (tasks.length < len) { if (editId === id) closeModal(); save(); renderTasks(); renderCalendar(); toast('🗑️ Removida'); }
+        }
+        function clearDone() {
+            if (!dateFilter) { toast('ℹ️ Selecione uma data primeiro'); return; }
+            const ids = filtered().filter(t => t.done).map(t => t.id);
+            if (!ids.length) { toast('ℹ️ Nada para limpar'); return; }
+            tasks = tasks.filter(t => !ids.includes(t.id));
+            save(); renderTasks(); renderCalendar(); toast(`🧹 ${ids.length} removida(s)`);
+        }
+
+        function openModal(id) {
+            const input = document.getElementById('inputName');
+            if (id) {
+                const t = tasks.find(x => x.id === id); if (!t) return;
+                editId = id;
+                document.getElementById('modalTitle').textContent = 'Editar Atividade';
+                document.getElementById('editBadge').style.display = 'block';
+                document.getElementById('btnSave').textContent = '💾 Atualizar';
+                input.value = t.name; miniDates = [...(t.dates||[today()])]; category = t.category;
+                if (miniDates.length) { const [y,m] = miniDates[0].split('-'); miniYear = +y; miniMonth = +m-1; }
+            } else {
+                editId = null;
+                document.getElementById('modalTitle').textContent = 'Nova Atividade';
+                document.getElementById('editBadge').style.display = 'none';
+                document.getElementById('btnSave').textContent = '💾 Salvar';
+                input.value = ''; miniDates = dateFilter?[dateFilter]:[today()]; category = 'trabalho';
+                const [y,m] = miniDates[0].split('-'); miniYear = +y; miniMonth = +m-1;
+            }
+            updateChips(); renderMiniCal();
+            document.getElementById('modalOverlay').classList.add('open');
+            setTimeout(() => input.focus(), 400);
+        }
+        function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); editId = null; miniDates = []; }
+        function setCategory(cat) { category = cat; updateChips(); }
+        function updateChips() {
+            document.querySelectorAll('.chip').forEach(c => {
+                c.classList.remove('active');
+                if (c.dataset.cat === category) c.classList.add('active');
+            });
+        }
+        function saveTask() {
+            const input = document.getElementById('inputName'), name = input.value.trim();
+            if (!name) { toast('⚠️ Digite o nome'); input.focus(); return; }
+            if (!miniDates.length) { toast('⚠️ Selecione pelo menos um dia'); return; }
+            if (editId) {
+                const t = tasks.find(x => x.id === editId);
+                if (t) { t.name = name; t.dates = [...miniDates]; t.category = category; }
+                toast('✅ Atualizada!');
+            } else {
+                tasks.push({ id: uid(), name, dates: [...miniDates], category, done: false, created: Date.now() });
+                toast('✅ Adicionada!');
+            }
+            save();
+            if (dateFilter && !miniDates.includes(dateFilter)) { dateFilter = miniDates[0]; const [y,m] = miniDates[0].split('-'); calYear = +y; calMonth = +m-1; }
+            renderTasks(); renderCalendar(); closeModal();
+        }
+
+        let toastTimer;
+        function toast(msg) {
+            const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+            clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+        }
+
+        function updateClock() {
+            const n = new Date();
+            document.getElementById('clockTime').textContent = String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
+            document.getElementById('clockSec').textContent = String(n.getSeconds()).padStart(2,'0');
+        }
+        function updateHeader() {
+            document.getElementById('headerDate').textContent = new Date().toLocaleDateString('pt-BR', { weekday:'long', day:'numeric', month:'long' });
+        }
+
+        function bind() {
+            document.getElementById('taskList').addEventListener('click', function(e) {
+                const btn = e.target.closest('[data-act]'); if (!btn) return;
+                e.stopPropagation();
+                const act = btn.dataset.act, id = btn.dataset.id;
+                if (act === 'toggle') toggleTask(id);
+                else if (act === 'edit') openModal(id);
+                else if (act === 'delete') deleteTask(id);
+            });
+            document.getElementById('calDates').addEventListener('click', function(e) {
+                const d = e.target.closest('.calendar-date'); if (!d) return; calSelect(d.dataset.date);
+            });
+            document.getElementById('calPrev').addEventListener('click', function(e) { e.preventDefault(); calMove(-1); });
+            document.getElementById('calNext').addEventListener('click', function(e) { e.preventDefault(); calMove(1); });
+            document.getElementById('clearFilterBtn').addEventListener('click', function(e) { e.preventDefault(); clearFilter(); });
+
+            document.getElementById('miniCalDates').addEventListener('click', function(e) {
+                const d = e.target.closest('.mini-cal-date'); if (!d) return; e.stopPropagation(); miniToggle(d.dataset.date);
+            });
+            document.getElementById('miniCalSelected').addEventListener('click', function(e) {
+                const r = e.target.closest('.remove'); if (!r) return; e.stopPropagation(); miniRemove(r.dataset.date);
+            });
+            document.getElementById('miniCalPrev').addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); miniMove(-1); });
+            document.getElementById('miniCalNext').addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); miniMove(1); });
+
+            document.getElementById('chips').addEventListener('click', function(e) {
+                const c = e.target.closest('.chip'); if (!c) return; setCategory(c.dataset.cat);
+            });
+            document.getElementById('fab').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('modalOverlay').classList.contains('open') ? closeModal() : openModal();
+            });
+            document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+            document.getElementById('modalSheet').addEventListener('click', function(e) { e.stopPropagation(); });
+            document.getElementById('btnCancel').addEventListener('click', function(e) { e.preventDefault(); closeModal(); });
+            document.getElementById('btnSave').addEventListener('click', function(e) { e.preventDefault(); saveTask(); });
+            document.getElementById('clearDone').addEventListener('click', function(e) { e.preventDefault(); clearDone(); });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && document.getElementById('modalOverlay').classList.contains('open')) closeModal();
+            });
+        }
+
+        function init() {
+            load(); renderTasks(); renderCalendar(); updateHeader(); updateClock(); updateChips(); bind();
+            setInterval(updateClock, 1000); setInterval(save, 15000);
+            window.addEventListener('beforeunload', save);
+        }
+        init();
     </script>
 </body>
 </html>
