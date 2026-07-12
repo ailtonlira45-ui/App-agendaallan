@@ -387,12 +387,27 @@
             border-radius: 6px;
             font-size: 0.85rem;
             text-align: center;
-            margin-left: auto;
             font-weight: 600;
             outline: none;
             background: #17171c;
             color: #fff;
             margin-right: 5px;
+        }
+
+        .parcela-item .input-edicao-data {
+            padding: 4px 6px;
+            border: 2px solid #10b981;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            outline: none;
+            background: #17171c;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        .parcela-item .input-edicao-data::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
         }
 
         .btn-confirmar-edicao {
@@ -461,6 +476,14 @@
         @media (max-width: 600px) {
             .row-inputs {
                 grid-template-columns: 1fr;
+            }
+            .parcela-item.editando {
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+            .parcela-item .input-edicao-parcela, .parcela-item .input-edicao-data {
+                width: 100%;
+                margin-right: 0;
             }
         }
     </style>
@@ -630,6 +653,13 @@
                 lista.push(`${dia}/${mes}/${ano}`);
             }
             return lista;
+        }
+
+        // --- CONVERSOR DE DATA PT-BR PARA ISO (aaaa-mm-dd) ---
+        function converterDataParaISO(dataBR) {
+            if (!dataBR || !dataBR.includes("/")) return "";
+            const partes = dataBR.split("/");
+            return `${partes[2]}-${partes[1]}-${partes[0]}`;
         }
 
         // --- OPERAÇÕES CRUD ---
@@ -917,11 +947,14 @@
                 
                 const valorAtual = cobranca.valoresParcelas[indiceParcela].toFixed(2);
                 const estaChecado = cobranca.historicoParcelas[indiceParcela] ? "checked" : "";
+                const dataAtualBR = cobranca.datasFuturas[indiceParcela] || "";
+                const dataAtualISO = converterDataParaISO(dataAtualBR);
 
                 parcelaDiv.classList.add("editando");
                 parcelaDiv.innerHTML = `
                     <input type="checkbox" ${estaChecado} disabled>
                     <span class="parcela-label">Parc. ${indiceParcela + 1}</span>
+                    <input type="date" class="input-edicao-data" value="${dataAtualISO}" id="input-data-edicao-${idCobranca}-${indiceParcela}">
                     <input type="number" class="input-edicao-parcela" value="${valorAtual}" step="0.01" min="0.01" id="input-edicao-${idCobranca}-${indiceParcela}">
                     <button class="btn-confirmar-edicao" onclick="confirmarEdicaoParcela(${idCobranca}, ${indiceParcela})">✓</button>
                     <button class="btn-cancelar-edicao" onclick="renderizarNotas()">✕</button>
@@ -936,9 +969,11 @@
 
         function confirmarEdicaoParcela(idCobranca, indiceParcela) {
             const inputEdicao = document.getElementById(`input-edicao-${idCobranca}-${indiceParcela}`);
-            if (!inputEdicao) return;
+            const inputDataEdicao = document.getElementById(`input-data-edicao-${idCobranca}-${indiceParcela}`);
+            if (!inputEdicao || !inputDataEdicao) return;
 
             const novoValorParcela = parseFloat(inputEdicao.value) || 0;
+            const novaDataISO = inputDataEdicao.value;
 
             if (novoValorParcela <= 0) {
                 alert("O valor da parcela deve ser maior que zero.");
@@ -954,6 +989,14 @@
                 if (!cobranca) return;
                 
                 cobranca.valoresParcelas[indiceParcela] = novoValorParcela;
+                
+                if (novaDataISO) {
+                    const partes = novaDataISO.split("-");
+                    cobranca.datasFuturas[indiceParcela] = `${partes[2]}/${partes[1]}/${partes[0]}`;
+                } else {
+                    cobranca.datasFuturas[indiceParcela] = "--/--/----";
+                }
+
                 recalcularTextoDivida(cobranca);
                 store.put(cobranca);
             };
